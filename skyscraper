@@ -1,0 +1,44 @@
+import math
+import time
+
+a = 0
+b = 0
+animation_1 = ['|', '/', '——', '\\' ]
+animation_2 = ['','.','..','...']
+                                        # animation 1 
+for i in range (0,100,10):
+    print(f'Loading: {i} %  {animation_1[a]}', end="")
+    time.sleep(0.35)
+    print('\r', end='')
+    a += 1
+    if a == 4:
+        a = 0
+
+print("Launching: Done!", end='')
+time.sleep(1)
+print('\r', end='')
+                                        #animation 2 
+for i in range (10):
+    print (f'Starting program: {animation_2[b]}', end='')
+    time.sleep(0.35)
+    print('\r', end='')
+    b += 1
+    if b == 4:
+        b =0
+                                         
+print('\r')
+                                       #starting program
+bulb = int(input('Введите число лампочек: '))
+floors_number = int(input('Введите число этажей: '))
+
+discriminant = 1 + 8*floors_number
+throw_min_1 = (-1 + math.sqrt(discriminant))/bulb
+throw_min_2 = (-1 - math.sqrt(discriminant))/bulb
+if bulb != 1:
+    if throw_min_1 < 0:
+        print ('Минимальное число бросков: ', int(throw_min_1))
+    else:
+        print('Минимальное число бросков: ', abs(int(throw_min_2)))
+
+else:
+    print('Минимальное число бросков: ',floors_number)
